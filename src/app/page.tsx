@@ -4,11 +4,13 @@ import CampusExplorer from '../components/CampusExplorer';
 export const revalidate = 0;
 
 export default async function Home() {
-  // Scarichiamo tutti gli edifici
+  // Query relazionale: estrae tutti gli edifici e le aule a essi associate
   const { data: edifici, error } = await supabase
     .from('edifici')
-    .select('*')
+    .select('*, aule(*)')
     .order('nome');
+
+    console.log(JSON.stringify(edifici, null, 2));
 
   if (error) {
     return <div className="p-8 text-red-500 font-bold">Errore di connessione: {error.message}</div>;
@@ -22,7 +24,6 @@ export default async function Home() {
           <p className="text-gray-600 font-medium">Trova aule, aule studio e servizi in Cittadella</p>
         </header>
         
-        {/* L'intero layout diviso a colonne è gestito qui */}
         <CampusExplorer edifici={edifici || []} />
       </div>
     </main>
