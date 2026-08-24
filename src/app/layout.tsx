@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import IosInstallPrompt from '../components/IosInstallPrompt'; // <-- Aggiungi import
+import IosInstallPrompt from '../components/IosInstallPrompt';
+import BottomNav from '../components/BottomNav'; // <-- Importa la barra
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -31,22 +32,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="it">
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function() {
-                  navigator.serviceWorker.register('/sw.js');
-                });
-              }
-            `,
-          }}
-        />
-      </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-gray-50 pb-24`}> 
+        {/* pb-24 evita che il contenuto delle pagine finisca dietro la barra fluttuante */}
         {children}
-        <IosInstallPrompt /> {/* <-- Aggiunto prima della chiusura del body */}
+        <BottomNav /> {/* <-- Inserita qui */}
+        <IosInstallPrompt />
       </body>
     </html>
   );
