@@ -1,13 +1,14 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import { Montserrat, Poppins } from 'next/font/google';
 import './globals.css';
 import IosInstallPrompt from '../components/IosInstallPrompt';
-import BottomNav from '../components/BottomNav'; // <-- Importa la barra
+import BottomNav from '../components/BottomNav';
 
-const inter = Inter({ subsets: ['latin'] });
+const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-montserrat' });
+const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-poppins' });
 
 export const viewport: Viewport = {
-  themeColor: '#1e3a8a',
+  themeColor: '#013C62',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
@@ -15,27 +16,22 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Campus UniCT',
-  description: 'Mappa e orari della Cittadella Universitaria',
+  title: 'WeLove Ingegneria',
+  description: 'App ufficiale WeLove Ingegneria',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'Campus UniCT',
+    title: 'WeLove Ingegneria',
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode; }) {
   return (
     <html lang="it">
-      <body className={`${inter.className} bg-gray-50 pb-24`}> 
-        {/* pb-24 evita che il contenuto delle pagine finisca dietro la barra fluttuante */}
+      <body className={`${poppins.variable} ${montserrat.variable} font-poppins bg-brand-light pb-24 text-gray-800`}> 
         {children}
-        <BottomNav /> {/* <-- Inserita qui */}
+        <BottomNav />
         <IosInstallPrompt />
       </body>
     </html>

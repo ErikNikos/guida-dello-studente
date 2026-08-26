@@ -34,7 +34,7 @@ export default function IosInstallPrompt() {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-[1000] bg-white border-t border-gray-200 shadow-[0_-10px_40px_rgba(0,0,0,0.15)] rounded-t-2xl p-6 pb-8 transform transition-transform duration-500 ease-out animate-slide-up">
       <div className="flex justify-between items-start mb-3">
-        <h3 className="text-lg font-extrabold text-blue-900">Installa l'App</h3>
+        <h3 className="text-lg font-extrabold text-brand-dark">Installa l'App</h3>
         <button 
           onClick={dismissPrompt} 
           className="text-gray-400 hover:text-gray-700 bg-gray-100 rounded-full w-8 h-8 flex items-center justify-center transition-colors"
@@ -47,7 +47,7 @@ export default function IosInstallPrompt() {
         Aggiungi la mappa alla tua schermata Home per un accesso rapido e a schermo intero.
       </p>
       
-      <div className="bg-gray-50 rounded-xl p-4 text-sm text-gray-800 flex flex-col gap-4 border border-gray-100">
+      <div className="bg-brand-light rounded-xl p-4 text-sm text-gray-800 flex flex-col gap-4 border border-gray-100">
         <div className="flex items-center gap-4">
           <div className="bg-white p-2 rounded shadow-sm border border-gray-100 text-blue-600">
             {/* Icona Condividi iOS */}

@@ -29,11 +29,11 @@ export default function MensaPage() {
   const menuAttivo = menu[activeTab];
 
   return (
-    <main className="min-h-screen bg-gray-50 p-4 lg:p-8 font-sans pb-24">
+    <main className="min-h-screen bg-brand-light p-4 lg:p-8 font-sans pb-24">
       <div className="max-w-xl mx-auto space-y-6">
         
         <header className="pt-2">
-          <h1 className="text-3xl font-black text-blue-950 mb-1 tracking-tight">Mensa ERSU</h1>
+          <h1 className="text-3xl font-black font-montserrat text-brand-dark mb-1 tracking-tight">Mensa ERSU</h1>
           <p className="text-gray-600 font-medium text-sm">Cittadella Universitaria</p>
         </header>
 
@@ -42,19 +42,19 @@ export default function MensaPage() {
           <div className="text-center">
             <span className="block text-xl mb-1">☀️</span>
             <span className="block text-xs font-bold text-gray-500 uppercase">Pranzo</span>
-            <span className="block text-sm font-black text-blue-900">12:15 - 14:45</span>
+            <span className="block text-sm font-black text-brand-dark">12:15 - 14:45</span>
           </div>
           <div className="w-px h-10 bg-gray-200"></div>
           <div className="text-center">
             <span className="block text-xl mb-1">🌙</span>
             <span className="block text-xs font-bold text-gray-500 uppercase">Cena</span>
-            <span className="block text-sm font-black text-blue-900">19:00 - 21:00</span>
+            <span className="block text-sm font-black text-brand-dark">19:00 - 21:00</span>
           </div>
         </div>
 
         {/* Tariffe ISEE */}
         <div>
-          <h3 className="text-sm font-extrabold text-blue-900 mb-3 ml-2 uppercase tracking-wider">Tariffe Pasto</h3>
+          <h3 className="text-sm font-extrabold font-montserrat text-brand-dark mb-3 ml-2 uppercase tracking-wider">Tariffe Pasto</h3>
           <div className="grid grid-cols-3 gap-2">
             {tariffe.map((tariffa, idx) => (
               <div key={idx} className={`${tariffa.bg} rounded-2xl p-3 border border-white shadow-sm flex flex-col items-center text-center justify-center`}>
@@ -69,7 +69,7 @@ export default function MensaPage() {
         {/* Menu del Giorno */}
         <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
           <div className="flex items-center justify-between mb-5">
-            <h3 className="text-sm font-extrabold text-blue-900 uppercase tracking-wider">Menu del Giorno</h3>
+            <h3 className="text-sm font-extrabold font-montserrat text-brand-dark uppercase tracking-wider">Menu del Giorno</h3>
             
             {/* Switcher Pranzo/Cena compatto */}
             <div className="flex bg-gray-100 p-1 rounded-lg">

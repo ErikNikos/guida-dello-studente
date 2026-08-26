@@ -38,11 +38,11 @@ export default function BusPage() {
   const lineaAttiva = trasporti[activeTab];
 
   return (
-    <main className="min-h-screen bg-gray-50 p-4 lg:p-8 font-sans">
+    <main className="min-h-screen bg-brand-light p-4 lg:p-8 font-sans">
       <div className="max-w-xl mx-auto space-y-6">
         
         <header className="pt-2">
-          <h1 className="text-3xl font-black text-blue-950 mb-1 tracking-tight">Trasporti</h1>
+          <h1 className="text-3xl font-black font-montserrat text-brand-dark mb-1 tracking-tight">Trasporti</h1>
           <p className="text-gray-600 font-medium text-sm">Collegamenti per la Cittadella</p>
         </header>
 
@@ -65,11 +65,11 @@ export default function BusPage() {
         {/* Card Info Generali */}
         <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-black text-gray-800">{lineaAttiva.nome}</h2>
+            <h2 className="text-2xl font-black font-montserrat text-brand-dark">{lineaAttiva.nome}</h2>
             <p className="text-gray-500 text-sm font-medium">{lineaAttiva.sottotitolo}</p>
           </div>
           <div className="text-right">
-            <div className="flex items-center gap-1.5 text-blue-900 font-bold mb-1 justify-end">
+            <div className="flex items-center gap-1.5 text-brand-dark font-bold mb-1 justify-end">
               <span>⏱️</span> {lineaAttiva.frequenza}
             </div>
             <div className="text-xs text-gray-400 font-semibold uppercase tracking-wide">
@@ -80,7 +80,7 @@ export default function BusPage() {
 
         {/* Timeline Fermate */}
         <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
-          <h3 className="text-sm font-extrabold text-blue-900 mb-6 uppercase tracking-wider">Percorso Principale</h3>
+          <h3 className="text-sm font-extrabold font-montserrat text-brand-dark mb-6 uppercase tracking-wider">Percorso Principale</h3>
           
           <div className="relative border-l-2 border-gray-200 ml-3 space-y-6">
             {lineaAttiva.fermate.map((fermata, idx) => (

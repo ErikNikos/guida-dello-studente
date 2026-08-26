@@ -68,7 +68,7 @@ function LocateControl({ setUserPosition }: { setUserPosition: (pos: [number, nu
   return (
     <button
       onClick={handleLocate}
-      className="absolute bottom-6 right-4 z-[400] bg-white p-3 rounded-full shadow-lg border border-gray-200 text-xl hover:bg-gray-50 flex items-center justify-center transition-transform active:scale-95"
+      className="absolute bottom-6 right-4 z-[400] bg-white p-3 rounded-full shadow-lg border border-gray-200 text-xl hover:bg-brand-light flex items-center justify-center transition-transform active:scale-95"
       aria-label="Trova la mia posizione"
     >
       📍
@@ -108,7 +108,7 @@ export default function Map({ edifici, focusPosition }: { edifici: Edificio[], f
             return (
               <Marker key={edificio.id} position={[edificio.latitudine, edificio.longitudine]} icon={getMarkerIcon(edificio.categoria || 'didattica')}>
                 <Popup>
-                  <strong className="text-blue-900 text-base">{edificio.nome}</strong>
+                  <strong className="text-brand-dark text-base">{edificio.nome}</strong>
                   {edificio.aule && edificio.aule.length > 0 && (
                     <div className="mt-3 space-y-2 border-t pt-2">
                       {[4, 3, 2, 1, 0, -1, -2].map(piano => {

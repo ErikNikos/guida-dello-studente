@@ -53,11 +53,11 @@ export default function OrariPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-gray-50 p-4 lg:p-8 font-sans pb-24">
+    <main className="min-h-screen bg-brand-light p-4 lg:p-8 font-sans pb-24">
       <div className="max-w-xl mx-auto space-y-6">
         
         <header className="pt-2">
-          <h1 className="text-3xl font-black text-blue-950 mb-1 tracking-tight">Il tuo Orario</h1>
+          <h1 className="text-3xl font-black font-montserrat text-brand-dark mb-1 tracking-tight">Il tuo Orario</h1>
           <p className="text-gray-600 font-medium text-sm">Organizza la tua giornata in Cittadella</p>
         </header>
 
@@ -68,7 +68,7 @@ export default function OrariPage() {
             <select 
               value={corso}
               onChange={(e) => setCorso(e.target.value)}
-              className="w-full mt-1 p-2 bg-gray-50 border border-gray-200 rounded-xl text-sm font-bold text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full mt-1 p-2 bg-brand-light border border-gray-200 rounded-xl text-sm font-bold text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="Ingegneria Informatica (L-8)">Ingegneria Informatica (L-8)</option>
               <option value="Ingegneria Industriale (L-9)">Ingegneria Industriale (L-9)</option>
@@ -83,7 +83,7 @@ export default function OrariPage() {
                 <button
                   key={a}
                   onClick={() => setAnno(a)}
-                  className={`flex-1 py-1.5 rounded-lg text-sm font-bold transition-all ${anno === a ? 'bg-blue-600 text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                  className={`flex-1 py-1.5 rounded-lg text-sm font-bold transition-all ${anno === a ? 'bg-brand-dark text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
                 >
                   {a}° Anno
                 </button>
@@ -98,7 +98,7 @@ export default function OrariPage() {
             <button
               key={g.id}
               onClick={() => setGiorno(g.id)}
-              className={`flex flex-col items-center justify-center w-12 h-12 rounded-xl transition-all ${giorno === g.id ? 'bg-blue-100 text-blue-700 font-black' : 'text-gray-400 font-semibold hover:bg-gray-50'}`}
+              className={`flex flex-col items-center justify-center w-12 h-12 rounded-xl transition-all ${giorno === g.id ? 'bg-blue-100 text-blue-700 font-black' : 'text-gray-400 font-semibold hover:bg-brand-light'}`}
             >
               <span className="text-xs uppercase">{g.nome}</span>
             </button>

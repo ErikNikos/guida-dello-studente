@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-dark: #013C62;
+  --color-brand-light: #f4ffff;
+  --font-montserrat: var(--font-montserrat);
+  --font-poppins: var(--font-poppins);
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
