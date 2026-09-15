@@ -5,6 +5,7 @@
   --color-brand-light: #f4ffff;
   --font-montserrat: var(--font-montserrat);
   --font-poppins: var(--font-poppins);
+  --font-pacifico: var(--font-pacifico);
 }
 
 body {
@@ -16,6 +17,15 @@ body {
   to { transform: translateY(0); opacity: 1; }
 }
 
+@keyframes bounce-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
 .animate-slide-up {
   animation: slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-bounce-soft {
+  animation: bounce-soft 2s ease-in-out infinite;
 }

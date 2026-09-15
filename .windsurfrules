@@ -1,0 +1,39 @@
+# Contesto del Progetto
+Questa è un'applicazione web PWA (Progressive Web App) chiamata "WeLove Ingegneria", destinata agli studenti del dipartimento di Ingegneria dell'Università di Catania (UniCT).
+Funzionalità principali: consultazione orari delle lezioni, mappa interattiva della Cittadella Universitaria, orari dei trasporti (Bus BRT1, Navetta Metro FCE) e menu/tariffe della Mensa ERSU.
+
+# Stack Tecnologico
+- Frontend: Next.js (App Router), React, Tailwind CSS (versione 4 configurata via `@theme` in `globals.css`)
+- Linguaggio: TypeScript (Strict mode)
+- Database: Supabase (PostgreSQL)
+- Mappe: React-Leaflet con tile gratuiti di OpenStreetMap (NO Carto, NO Google Maps)
+- PWA: Configurazione con `manifest.json`, Service Worker base e componente custom per prompt installazione su iOS.
+
+# Regole Architetturali per l'AI
+
+1. **Design System & UI (CRITICO):**
+   - Colori: Utilizza ESCLUSIVAMENTE le variabili custom `brand-dark` (#013C62) e `brand-light` (#f4ffff). Evita classi base come `blue-900` o `gray-50`.
+   - Tipografia: Utilizza la classe `font-poppins` per il corpo del testo e `font-montserrat` per tutti i titoli (H1, H2, H3, ecc.).
+   - Layout Mobile-First: L'applicazione fa affidamento su una `BottomNav` fluttuante arrotondata. Assicurati che le nuove pagine abbiano sempre un padding inferiore (es. `pb-24`) affinché il contenuto scrollabile non finisca nascosto dietro la barra.
+
+2. **Database & Tipi Supabase:**
+   - Schema di riferimento consolidato: Tabelle `edifici` (con `latitudine`, `longitudine`, `categoria`), `aule` (colonna `piano` di tipo `integer`), `corsi_laurea`, `insegnamenti` e `lezioni`.
+   - Non inventare tabelle, colonne o tipi. Utilizza l'interfaccia/connessione definita in `src/lib/supabase.ts` per interrogare il database.
+
+3. **Data Fetching:**
+   - Sfrutta i React Server Components di Next.js per il fetch iniziale dei dati da Supabase prima di renderizzare la UI (es. caricamento edifici in `src/app/mappa/page.tsx`).
+   - Evita chiamate client-side (useEffect) per dati che possono essere pre-renderizzati.
+
+4. **Mappe Interattive:**
+   - Il componente mappa deve essere obbligatoriamente lato client (`"use client"`) e caricato dinamicamente con `next/dynamic` disabilitando l'SSR.
+   - Utilizza ESCLUSIVAMENTE `react-leaflet`.
+   - Utilizza SEMPRE i tile OpenStreetMap (`url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"`) e non servizi di terze parti, per evitare watermark.
+
+5. **Analisi Preliminare & Codice:**
+   - Prima di scrivere o modificare codice, leggi sempre lo stato attuale dei file coinvolti per mantenere la coerenza con le interfacce a "Tab" o "Timeline" già costruite.
+   - Evita l'aggiunta di stili globali in `globals.css` al di fuori della configurazione Tailwind v4.
+
+# Flusso di Lavoro (Vibe Coding)
+- Risolvi un problema alla volta, fornendo risposte precise e brillanti, senza forzare spiegazioni non richieste.
+- Assicurati che l'app sia sempre compilabile (no typescript error) prima di proporre la modifica finale.
+- Se mancano pacchetti (es. plugin di leaflet), installali automaticamente tramite terminale o fornisci il comando esatto in evidenza.

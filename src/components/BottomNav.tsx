@@ -18,29 +18,66 @@ export default function BottomNav() {
 
   return (
     <div className="fixed bottom-6 left-4 right-4 z-[999] animate-slide-up">
-      <div className="bg-white/90 backdrop-blur-md border border-gray-200 shadow-xl rounded-2xl flex justify-around items-center px-2 py-2">
-        {navItems.map((item) => {
-          const isActive = pathname.startsWith(item.path);
-          
-          return (
-            <Link
-              key={item.path}
-              href={item.path}
-              className={`flex flex-col items-center justify-center w-16 h-14 rounded-xl transition-all duration-300 ${
-                isActive 
-                  ? 'bg-brand-dark text-white shadow-md transform scale-105' 
-                  : 'text-gray-500 hover:bg-gray-100'
-              }`}
-            >
-              <span className={`text-xl mb-0.5 ${isActive ? 'drop-shadow-sm' : 'grayscale opacity-80'}`}>
-                {item.icon}
-              </span>
-              <span className={`text-[10px] ${isActive ? 'font-bold' : 'font-medium'}`}>
-                {item.name}
-              </span>
-            </Link>
-          );
-        })}
+      <div className="bg-white/90 backdrop-blur-md border border-gray-200 shadow-xl rounded-2xl flex justify-around items-center px-2 py-2 relative">
+        {/* Left side items */}
+        <div className="flex gap-1">
+          {navItems.slice(0, 2).map((item) => {
+            const isActive = pathname.startsWith(item.path);
+            
+            return (
+              <Link
+                key={item.path}
+                href={item.path}
+                className={`flex flex-col items-center justify-center w-16 h-14 rounded-xl transition-all duration-300 ${
+                  isActive 
+                    ? 'bg-brand-dark text-white shadow-md transform scale-105' 
+                    : 'text-gray-500 hover:bg-gray-100'
+                }`}
+              >
+                <span className={`text-xl mb-0.5 ${isActive ? 'drop-shadow-sm' : 'grayscale opacity-80'}`}>
+                  {item.icon}
+                </span>
+                <span className={`text-[10px] ${isActive ? 'font-bold' : 'font-medium'}`}>
+                  {item.name}
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Central Home Button */}
+        <Link
+          href="/"
+          className="relative -top-6 bg-brand-dark text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 border-4 border-white"
+        >
+          <span className="text-2xl animate-bounce-soft">🏠</span>
+        </Link>
+
+        {/* Right side items */}
+        <div className="flex gap-1">
+          {navItems.slice(2).map((item) => {
+            const isActive = pathname.startsWith(item.path);
+            
+            return (
+              <Link
+                key={item.path}
+                href={item.path}
+                className={`flex flex-col items-center justify-center w-16 h-14 rounded-xl transition-all duration-300 ${
+                  isActive 
+                    ? 'bg-brand-dark text-white shadow-md transform scale-105' 
+                    : 'text-gray-500 hover:bg-gray-100'
+                }`}
+              >
+                <span className={`text-xl mb-0.5 ${isActive ? 'drop-shadow-sm' : 'grayscale opacity-80'}`}>
+                  {item.icon}
+                </span>
+                <span className={`text-[10px] ${isActive ? 'font-bold' : 'font-medium'}`}>
+                  {item.name}
+                </span>
+              </Link>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

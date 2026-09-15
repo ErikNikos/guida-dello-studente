@@ -15,7 +15,7 @@ export default async function MappaPage() {
   }
 
   return (
-    <main className="min-h-screen bg-brand-light p-4 lg:p-8 font-sans">
+    <main className="flex-1 bg-brand-light p-4 lg:p-8 font-sans pb-32">
       <div className="max-w-7xl mx-auto space-y-4">
         <header className="pt-2">
           <h1 className="text-3xl font-black font-montserrat text-brand-dark mb-1 tracking-tight">Esplora</h1>

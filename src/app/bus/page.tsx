@@ -38,7 +38,7 @@ export default function BusPage() {
   const lineaAttiva = trasporti[activeTab];
 
   return (
-    <main className="min-h-screen bg-brand-light p-4 lg:p-8 font-sans">
+    <main className="flex-1 bg-brand-light p-4 lg:p-8 font-sans pb-32">
       <div className="max-w-xl mx-auto space-y-6">
         
         <header className="pt-2">

@@ -8,10 +8,10 @@ const Map = dynamic(() => import('./Map'), {
   loading: () => <div className="h-[600px] w-full bg-gray-100 animate-pulse rounded-2xl"></div>,
 });
 
-type Aula = { id: string; nome: string; piano: number; };
+type Aula = { id: string; nome: string; piano: number | null; };
 type Edificio = {
   id: string; nome: string; latitudine: number | null; longitudine: number | null;
-  categoria: string; aule: Aula[];
+  categoria: string | null; aule: Aula[];
 };
 
 const ETICHETTE_CATEGORIE: Record<string, string> = {
@@ -31,9 +31,9 @@ export default function CampusExplorer({ edifici }: { edifici: Edificio[] }) {
 
   const edificiRaggruppati = useMemo(() => {
     return edifici
-      .filter(e => e.nome.toLowerCase().includes(query) || (e.categoria && e.categoria.toLowerCase().includes(query)))
+      .filter(e => e.nome.toLowerCase().includes(query) || (e.categoria !== null && e.categoria.toLowerCase().includes(query)))
       .reduce((acc, edificio) => {
-        const cat = edificio.categoria || 'didattica';
+        const cat = edificio.categoria ?? 'didattica';
         if (!acc[cat]) acc[cat] = [];
         acc[cat].push(edificio);
         return acc;

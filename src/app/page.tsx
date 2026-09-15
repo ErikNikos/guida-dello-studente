@@ -17,26 +17,36 @@ export default function Home() {
   }, []);
 
   const menuItems = [
-    { name: 'Orari', path: '/orari', icon: '🕒', color: 'bg-brand-dark' },
-    { name: 'Mappa', path: '/mappa', icon: '📍', color: 'bg-brand-dark' },
-    { name: 'Bus', path: '/bus', icon: '🚌', color: 'bg-brand-dark' },
-    { name: 'Mensa', path: '/mensa', icon: '🍽️', color: 'bg-brand-dark' },
+    { name: 'Orari', path: '/orari', icon: '🕒', color: 'bg-brand-dark', image: '/bg-orari.jpg' },
+    { name: 'Mappa', path: '/mappa', icon: '📍', color: 'bg-brand-dark', image: '/bg-mappa.jpg' },
+    { name: 'Bus', path: '/bus', icon: '🚌', color: 'bg-brand-dark', image: '/bg-bus.jpg' },
+    { name: 'Mensa', path: '/mensa', icon: '🍽️', color: 'bg-brand-dark', image: '/bg-mensa.jpg' },
   ];
 
   return (
-    <main className="min-h-screen bg-brand-light flex flex-col">
+    <main className="flex-1 bg-brand-light flex flex-col">
       <header 
-        className={`flex items-center justify-center bg-white w-full transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] z-50
-          ${animateOut ? 'h-24 rounded-b-3xl shadow-sm' : 'h-screen'}`
+        className={`flex items-center justify-center bg-brand-light w-full transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] z-50
+          ${animateOut ? 'h-24 rounded-b-3xl shadow-sm bg-white' : 'h-screen bg-brand-light'}`
         }
       >
         <div className={`flex items-center transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] 
-          ${animateOut ? 'scale-100 pt-8' : 'scale-125'}`}
+          ${animateOut ? 'scale-100 pt-2' : 'scale-100'}`}
         >
           {animateOut ? (
-            <Image src="/logo-orizzontale.png" alt="WeLove Ingegneria" width={200} height={50} priority className="object-contain" />
+            <Image src="/logo-orizzontale.png" alt="WeLove Ingegneria" width={400} height={150} priority className="object-contain" style={{ width: 'auto', height: '50px' }} />
           ) : (
-            <Image src="/icon-192" alt="WeLove Ingegneria" width={140} height={140} priority className="object-contain drop-shadow-xl" />
+            <div className="flex flex-col items-center gap-6">
+              <Image src="/icon-192.png" alt="WeLove Ingegneria" width={400} height={400} priority className="object-contain drop-shadow-2xl" />
+              <div className="text-center">
+                <h1 className="text-3xl font-montserrat font-bold text-brand-dark">
+                  Al servizio degli studenti
+                </h1>
+                <p className="text-2xl font-pacifico font-normal text-yellow-500 mt-1">
+                  dal 2014
+                </p>
+              </div>
+            </div>
           )}
         </div>
       </header>
@@ -51,11 +61,27 @@ export default function Home() {
           <div className="grid grid-cols-2 gap-4">
             {menuItems.map((item) => (
               <Link key={item.path} href={item.path}>
-                <div className={`${item.color} text-white rounded-[2rem] p-6 aspect-square flex flex-col items-start justify-between shadow-md transform transition-transform active:scale-95 border border-brand-dark/20`}>
-                  <div className="bg-brand-light/10 p-3 rounded-2xl backdrop-blur-sm">
-                    <span className="text-3xl filter drop-shadow-sm">{item.icon}</span>
+                <div className="relative rounded-[2rem] aspect-square shadow-md transform transition-transform active:scale-95 border border-brand-dark/20 overflow-hidden">
+                  {/* Background Image */}
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    loading="eager"
+                  />
+                  
+                  {/* Gradient Overlay for Text Readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/40 to-transparent" />
+                  
+                  {/* Content */}
+                  <div className="absolute inset-0 p-6 flex flex-col items-start justify-between z-10">
+                    <div className="bg-brand-light/10 p-3 rounded-2xl backdrop-blur-sm">
+                      <span className="text-3xl filter drop-shadow-sm">{item.icon}</span>
+                    </div>
+                    <span className="font-montserrat font-bold text-xl tracking-wide text-brand-light">{item.name}</span>
                   </div>
-                  <span className="font-montserrat font-bold text-xl tracking-wide text-brand-light">{item.name}</span>
                 </div>
               </Link>
             ))}

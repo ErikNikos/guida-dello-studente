@@ -5,13 +5,13 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { useEffect, useState } from 'react';
 
-type Aula = { id: string; nome: string; piano: number; };
+type Aula = { id: string; nome: string; piano: number | null; };
 type Edificio = {
   id: string; nome: string; latitudine: number | null; longitudine: number | null;
-  categoria: string; aule: Aula[];
+  categoria: string | null; aule: Aula[];
 };
 
-const getMarkerIcon = (categoria: string) => {
+const getMarkerIcon = (categoria: string | null) => {
   let emoji = '🏢';
   switch (categoria) {
     case 'mensa': emoji = '🍽️'; break;
